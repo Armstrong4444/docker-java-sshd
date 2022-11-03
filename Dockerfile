@@ -11,7 +11,7 @@ RUN adduser --home "${USER_HOME}" --shell /bin/bash "${USER_NAME}" && \
     chown $USER_NAME:$USER_NAME /data
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends bash git nano openssh-server && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends bash git nano openssh-server podman && \
     rm -rf /var/lib/apt/lists/*
 
 USER $USER_NAME
