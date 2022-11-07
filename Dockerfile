@@ -1,5 +1,5 @@
 ARG BASE_IMAGE_VERSION
-ARG BASE_IMAGE=eclipse-temurin:$BASE_IMAGE_VERSION
+ARG BASE_IMAGE=ubuntu:$BASE_IMAGE_VERSION
 
 FROM $BASE_IMAGE
 
@@ -11,7 +11,7 @@ RUN adduser --home "${USER_HOME}" --shell /bin/bash "${USER_NAME}" && \
     chown $USER_NAME:$USER_NAME /data
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends bash git nano openssh-server podman && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends bash git nano openssh-server buildah && \
     rm -rf /var/lib/apt/lists/*
 
 USER $USER_NAME
